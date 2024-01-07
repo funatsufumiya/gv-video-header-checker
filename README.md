@@ -13,3 +13,18 @@ positional arguments:
 options:
   -h, --help  show this help message and exit
 ```
+
+## Example
+
+```bash
+$ python gv-video-header-checker.py test.gv
+```
+
+```txt
+width: 6000
+height: 3999
+frame count: 501
+fps: 30.000000
+format: DXT5
+frame bytes: 24000000
+```
