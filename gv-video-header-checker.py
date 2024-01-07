@@ -29,7 +29,7 @@ formats = {
 }
 
 def main():
-    parser = argparse.ArgumentParser(description='Check the header of gv video file',
+    parser = argparse.ArgumentParser(description='Check the header of gv video file: https://github.com/Ushio/ofxExtremeGpuVideo?tab=readme-ov-file#binary-file-format-gv',
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('video_file', help='.gv video file')
