@@ -79,6 +79,10 @@ def main():
     parser.add_argument('-s', '--skip', type=int, default=0, help='skip frames')
     # show one frame using plt and exit
     parser.add_argument('-p', '--plot', action='store_true', help='show one frame using plt and exit')
+    # show one frame using ipython and exit
+    parser.add_argument('-i', '--ipython', action='store_true', help='show one frame using ipython and exit')
+    # save file one frame, and exit
+    parser.add_argument('-o', '--output', help='save one frame to file and exit')
 
     args = parser.parse_args()
 
@@ -88,6 +92,8 @@ def main():
     
     skip_frames = args.skip
     plot_frame = args.plot
+    ipython_frame = args.ipython
+    output_file = args.output
 
     with open(args.video_file, 'rb') as f:
         data = f.read(24)
@@ -126,7 +132,20 @@ def main():
                     dec_img = Image.frombytes("RGBA", (width, height), decoded_data, 'raw', ("BGRA"))
                 else:
                     dec_img = Image.frombytes("RGBA", (width, height), decoded_data, 'raw', ("BGRA"))
-
+                
+                if ipython_frame:
+                    # first save to temporary file
+                    import tempfile
+                    f = tempfile.NamedTemporaryFile(suffix='.png')
+                    dec_img.save(f.name)
+                    
+                    import IPython
+                    return IPython.display.Image(f.name)
+                
+                if output_file:
+                    dec_img.save(output_file)
+                    return
+                
                 if plot_frame:
                     plt.imshow(dec_img)
                     plt.show()
