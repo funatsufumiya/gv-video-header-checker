@@ -28,7 +28,7 @@ import argparse
 import texture2ddecoder
 import lz4.frame
 import lz4.block
-# from matplotlib import pyplot as plt
+from matplotlib import pyplot as plt
 import numpy as np
 import cv2
 from PIL import Image
@@ -55,16 +55,16 @@ formats = {
 def decode_dxt(data, width, height, fmt):
     # lz4_decoded_data = lz4.frame.decompress(data)
     if fmt == 1:
-        lz4_decoded_data = lz4.block.decompress(data, uncompressed_size=width * height)
+        lz4_decoded_data = lz4.block.decompress(data, uncompressed_size=width * height * 4)
         return texture2ddecoder.decode_bc1(lz4_decoded_data, width, height)
     elif fmt == 3:
-        lz4_decoded_data = lz4.block.decompress(data, uncompressed_size=width * height)
+        lz4_decoded_data = lz4.block.decompress(data, uncompressed_size=width * height * 4)
         return texture2ddecoder.decode_bc2(lz4_decoded_data, width, height)
     elif fmt == 5:
-        lz4_decoded_data = lz4.block.decompress(data, uncompressed_size=width * height)
+        lz4_decoded_data = lz4.block.decompress(data, uncompressed_size=width * height * 4)
         return texture2ddecoder.decode_bc3(lz4_decoded_data, width, height)
     elif fmt == 7:
-        lz4_decoded_data = lz4.block.decompress(data, uncompressed_size=width * height)
+        lz4_decoded_data = lz4.block.decompress(data, uncompressed_size=width * height * 4)
         return texture2ddecoder.decode_bc7(lz4_decoded_data, width, height)
     else:
         print('Error: unknown format')
@@ -77,6 +77,8 @@ def main():
     parser.add_argument('video_file', help='.gv video file')
     # skip frames
     parser.add_argument('-s', '--skip', type=int, default=0, help='skip frames')
+    # show one frame using plt and exit
+    parser.add_argument('-p', '--plot', action='store_true', help='show one frame using plt and exit')
 
     args = parser.parse_args()
 
@@ -85,6 +87,7 @@ def main():
         return
     
     skip_frames = args.skip
+    plot_frame = args.plot
 
     with open(args.video_file, 'rb') as f:
         data = f.read(24)
@@ -123,6 +126,12 @@ def main():
                     dec_img = Image.frombytes("RGBA", (width, height), decoded_data, 'raw', ("BGRA"))
                 else:
                     dec_img = Image.frombytes("RGBA", (width, height), decoded_data, 'raw', ("BGRA"))
+
+                if plot_frame:
+                    plt.imshow(dec_img)
+                    plt.show()
+                    return
+
                 im = pil2cv(dec_img)
                 del decoded_data
                 del dec_img
