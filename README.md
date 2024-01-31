@@ -60,8 +60,15 @@ addresses and sizes:
 
 ### Viewer
 
+- view each frames with `cv2` (press any key to next frame, ESC to exit)
+- save to file with `-o` option
+
 ```bash
 $ python gv-video-viewer.py ~/Downloads/test.gv
+
 # or skip frames with
 # $ python gv-video-viewer.py ~/Downloads/test.gv -s 10
+
+# or save to file with
+# $ python gv-video-viewer.py ~/Downloads/test.gv -o output.png
 ```
