@@ -22,6 +22,17 @@ and same as:
 - Viewer: `gv-video-viewer.py`
 - Cutter: `gv-video-cutter.py`
 
+## Requirements for viewer
+
+```bash
+pip install lz4
+pip install texture2ddecoder
+pip install opencv-python
+pip install pillow
+pip install numpy
+pip install matplotlib
+```
+
 ## Example
 
 ### Header Checker
