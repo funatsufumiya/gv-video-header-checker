@@ -4,6 +4,8 @@ Check the header of gv video file: https://github.com/Ushio/ofxExtremeGpuVideo?t
 
 ## Usage
 
+- Header Checker: `gv-video-header-checker.py`
+
 ```txt
 usage: gv-video-header-checker.py [-h] video_file
 
@@ -16,8 +18,9 @@ options:
 
 and same as:
 
-- `gv-video-address-checker.py`
-- `gv-video-viewer.py`
+- Address Checker: `gv-video-address-checker.py`
+- Viewer: `gv-video-viewer.py`
+- Cutter: `gv-video-cutter.py`
 
 ## Example
 
@@ -39,7 +42,7 @@ frame bytes: 24000000
 ### Address Checker
 
 ```bash
-$ python gv-video-address-checker.py ~/Downloads/test.gv
+$ python gv-video-address-checker.py test.gv
 ```
 
 ```txt
@@ -64,11 +67,19 @@ addresses and sizes:
 - save to file with `-o` option
 
 ```bash
-$ python gv-video-viewer.py ~/Downloads/test.gv
+$ python gv-video-viewer.py test.gv
 
 # or skip frames with
-# $ python gv-video-viewer.py ~/Downloads/test.gv -s 10
+# $ python gv-video-viewer.py test.gv -s 10
 
 # or save to file with
-# $ python gv-video-viewer.py ~/Downloads/test.gv -o output.png
+# $ python gv-video-viewer.py test.gv -o output.png
+```
+
+### Cutter
+
+- cut gv video file with `-s` (skip frames) and `-n` (frame count) option
+
+```bash
+$ python gv-video-cutter.py test.gv -s 10 -n 60 -o cut.gv
 ```
