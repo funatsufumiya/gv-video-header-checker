@@ -1,4 +1,4 @@
-# GV Video Header Checker (and viewer)
+# GV Video Header Checker (and viewer, cutter)
 
 Check the header of gv video file: https://github.com/Ushio/ofxExtremeGpuVideo?tab=readme-ov-file#binary-file-format-gv
 
