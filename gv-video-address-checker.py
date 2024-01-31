@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
 
-# gv-video-header-checker.py
-# Check the header of gv video file
-# Usage: gv-video-header-checker.py <video file>
-
 # NOTE:
 # gv file format
 # 0: uint32_t width

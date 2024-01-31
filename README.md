@@ -14,7 +14,14 @@ options:
   -h, --help  show this help message and exit
 ```
 
+and same as:
+
+- `gv-video-address-checker.py`
+- `gv-video-viewer.py`
+
 ## Example
+
+### Header Checker
 
 ```bash
 $ python gv-video-header-checker.py test.gv
@@ -27,4 +34,34 @@ frame count: 501
 fps: 30.000000
 format: DXT5
 frame bytes: 24000000
+```
+
+### Address Checker
+
+```bash
+$ python gv-video-address-checker.py ~/Downloads/test.gv
+```
+
+```txt
+width: 1280
+height: 720
+frame count: 163
+fps: 30.000000
+format: DXT1
+frame bytes: 460800
+addresses and sizes:
+0: address 24, size 116401
+1: address 116425, size 61550
+2: address 177975, size 69337
+3: address 247312, size 99743
+4: address 347055, size 99242
+...(print all addresses)
+```
+
+### Viewer
+
+```bash
+$ python gv-video-viewer.py ~/Downloads/test.gv
+# or skip frames with
+# $ python gv-video-viewer.py ~/Downloads/test.gv -s 10
 ```
