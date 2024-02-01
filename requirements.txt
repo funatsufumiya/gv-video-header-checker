@@ -1,0 +1,6 @@
+lz4
+texture2ddecoder
+opencv-python
+pillow
+numpy
+matplotlib
