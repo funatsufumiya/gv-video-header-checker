@@ -25,12 +25,7 @@ and same as:
 ## Requirements for viewer
 
 ```bash
-pip install lz4
-pip install texture2ddecoder
-pip install opencv-python
-pip install pillow
-pip install numpy
-pip install matplotlib
+pip install lz4 texture2ddecoder opencv-python pillow numpy matplotlib
 ```
 
 ## Example
