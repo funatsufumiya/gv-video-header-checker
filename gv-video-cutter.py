@@ -88,6 +88,7 @@ def main():
         with open(output_file, 'wb') as out:
             out.write(struct.pack('IIIfII', width, height, real_frame_count, fps, fmt, frame_bytes))
 
+            new_frame_infos = []
             # write frame data
             i = 0
             for address, size in frame_infos:
@@ -97,6 +98,7 @@ def main():
                     print('Error: video file is too small')
                     return
                 
+                current_address = out.tell()
                 out.write(data)
 
                 if i + 1 < len(frame_infos):
@@ -105,11 +107,13 @@ def main():
                     zero_size = next_address - (address + size)
                     out.write(b'\x00' * zero_size)
 
+                new_frame_infos.append((current_address, size))
+
                 i += 1
 
 
             # write frame infos
-            for address, size in frame_infos:
+            for address, size in new_frame_infos:
                 out.write(struct.pack('QQ', address, size))
 
 if __name__ == '__main__':
