@@ -112,10 +112,5 @@ def main():
             for address, size in frame_infos:
                 out.write(struct.pack('QQ', address, size))
 
-
-
-
-
-
 if __name__ == '__main__':
     main()

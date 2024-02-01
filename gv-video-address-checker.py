@@ -58,9 +58,5 @@ def main():
             address, size = struct.unpack('QQ', f.read(16))
             print('%d: address %d, size %d' % (i, address, size))
 
-
-
-
-
 if __name__ == '__main__':
     main()

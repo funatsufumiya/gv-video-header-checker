@@ -55,7 +55,5 @@ def main():
         print('format: %s' % formats[fmt])
         print('frame bytes: %d' % frame_bytes)
 
-
-
 if __name__ == '__main__':
     main()
