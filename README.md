@@ -1,6 +1,6 @@
 # GV Video Header Checker (and viewer, cutter)
 
-Utility tools of GV video file: https://github.com/Ushio/ofxExtremeGpuVideo?tab=readme-ov-file#binary-file-format-gv
+Utility tools of GV video file: https://github.com/Ushio/ofxExtremeGpuVideo#binary-file-format-gv
 
 ## Usage
 
