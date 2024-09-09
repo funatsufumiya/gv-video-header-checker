@@ -21,6 +21,7 @@ and same as:
 - Address Checker: `gv-video-address-checker.py`
 - Viewer: `gv-video-viewer.py`
 - Cutter: `gv-video-cutter.py`
+- Image Sequence Exporter: `gv-video-to-seq.py`
 
 ## Requirements for viewer
 
@@ -88,4 +89,12 @@ $ python gv-video-viewer.py test.gv
 
 ```bash
 $ python gv-video-cutter.py test.gv -s 10 -n 60 -o cut.gv
+```
+
+### Image Sequence Exporter
+
+- export image sequence from gv video file
+
+```bash
+$ python gv-video-to-seq.py test.gv output_dir
 ```
