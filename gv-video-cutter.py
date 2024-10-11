@@ -32,7 +32,7 @@ formats = {
 }
 
 def main():
-    parser = argparse.ArgumentParser(description='Check the header and show addresses list of gv video file: https://github.com/Ushio/ofxExtremeGpuVideo?tab=readme-ov-file#binary-file-format-gv',
+    parser = argparse.ArgumentParser(description='GV video cutter',
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('video_file', help='.gv video file')
@@ -65,6 +65,12 @@ def main():
         frame_infos = []
 
         f.seek(-frame_count * 16, os.SEEK_END)
+        # first, create dictionary
+        addr_size_dict = {}
+        for i in range(frame_count):
+            address, size = struct.unpack('QQ', f.read(16))
+            addr_size_dict[address] = size
+
         for i in range(frame_count):
             if i < skip_frames:
                 continue
@@ -73,7 +79,7 @@ def main():
 
             real_frame_count += 1
 
-            address, size = struct.unpack('QQ', f.read(16))
+            address, size = list(addr_size_dict.items())[i]
             # print('%d: address %d, size %d' % (i, address, size))
             frame_infos.append((address, size))
 
